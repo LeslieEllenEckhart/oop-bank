@@ -5,12 +5,20 @@ class BankAccount
         @balance = opening_balance
     end
     
-#     def deposit (deposit_amt, account_holder)
-#         @deposit_amt = deposit_amt
-#         @account_holder = account_holder
+    def deposit (deposit_amt)
 #         @balance = @balance + deposit_amt
-#     end
-#    def balance
-#    end
+        @balance += deposit_amt         
+    end
+
+    def withdrawal (withdrawal_amt)
+#         @balance = @balance - withdrawal_amt
+        @balance -= withdrawal_amt
+    end
+    
+    def transfer (transfer_amt, account_two)
+        withdrawal(transfer_amt)
+        account_two.deposit(transfer_amt)
+    end
+    
 end
 
