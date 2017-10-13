@@ -1,7 +1,11 @@
 class BankAccount
     attr_reader :balance
-    
-    def initialize (opening_balance, account_holder)
+     @@minimum_opening_balance = 200
+         
+    def initialize (opening_balance, account_holder) 
+        if opening_balance < @@minimum_opening_balance
+            raise ArgumentError
+        end
         @balance = opening_balance
     end
     
@@ -20,5 +24,8 @@ class BankAccount
         account_two.deposit(transfer_amt)
     end
     
+    def self.minimum_balance(minimum_balance)
+        @@minimum_opening_balance = minimum_balance
+    end
 end
 
